@@ -44,7 +44,6 @@ export default function Navbar() {
           <a href="#top" className="hover:underline" onClick={() => setOpen(false)}>Accueil</a>
           <a href="#gallery" className="hover:underline" onClick={() => setOpen(false)}>Galerie photos</a>
           <a href="#avis" className="hover:underline" onClick={() => setOpen(false)}>Avis clients</a>
-          <a href="mailto:contact@serrurier-express.fr" className="hover:underline" onClick={() => setOpen(false)}>Contact</a>
         </nav>
         <div className="mt-auto pt-10 text-xs text-gray-400">© 2025 Serrurier Services</div>
       </aside>

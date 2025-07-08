@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "Serrurier Services",
     description:
       "Ouverture de porte et dépannage serrurerie rapide 24/7. Intervention express partout en Île-de-France.",
-    images: ["https://serrurier-express.fr/og-image.jpg"],
+    images: ["/opengraf-image.png"],
   },
   robots: {
     index: true,
@@ -86,6 +86,9 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
     },
+  },
+  icons: {
+    icon: "/logo-serrurier-services-ile-de-france.ico",
   },
 };
 
