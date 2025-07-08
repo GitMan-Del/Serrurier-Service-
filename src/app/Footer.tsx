@@ -47,8 +47,8 @@ export default function Footer() {
             </li>
             <li>
               <span className="inline-block mr-2">📍</span>
-              <a href="https://www.google.com/maps/place/Île-de-France" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Île-de-France – Intervention rapide à domicile
+              <a href="https://maps.app.goo.gl/gpN4ypBEVJg9AmrAA" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  54-56 Avenue Hoche, 75008 Paris
               </a>
             </li>
           </ul>

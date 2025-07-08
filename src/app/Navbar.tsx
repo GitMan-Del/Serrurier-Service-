@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar fixed top */}
-      <nav className="fixed w-fit md:left-40 bg-transparent top-10 left-0 z-50 flex items-center justify-between px-6 py-3">
+      <nav className="fixed w-fit md:left-40 bg-transparent top-10 left-0 z-100 flex items-center justify-between px-6 py-3">
         <button
           className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-special)] shadow-lg hover:scale-105 transition-all group hover:cursor-pointer"
           aria-label="Ouvrir le menu"
