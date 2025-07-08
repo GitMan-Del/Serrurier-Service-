@@ -32,9 +32,7 @@ const regionNames: Record<string, string> = {
   "provence-alpes-cote-d-azur": "Provence-Alpes-Côte d'Azur"
 };
 
-const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
-
-export async function generateMetadata({ params }: { params: { region: string } }) {
+export function generateMetadata({ params }: { params: { region: string } }) {
   const region = params.region;
   const regionLabel = regionNames[region];
 
@@ -44,6 +42,8 @@ export async function generateMetadata({ params }: { params: { region: string } 
       description: "Intervention rapide pour ouverture de porte, dépannage de serrure et changement de cylindre en Île-de-France et toată Franța. Serrurier agréé, disponible 24/7.",
     };
   }
+
+  const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
 
   return {
     title: `Serrurier ${regionLabel} – Dépannage 24h/24 & 7j/7`,
@@ -94,12 +94,9 @@ export async function generateMetadata({ params }: { params: { region: string } 
 
 export default function RegionPage({ params }: { params: { region: string } }) {
   const { region } = params;
-  // Verific dacă regiunea este una validă
   const regionValid = REGIONS.includes(region as (typeof REGIONS)[number]);
-  // Dacă nu e validă, poți returna 404 sau main page default
   if (!regionValid) {
     return <MainPage />;
   }
-  // Poți trimite regiunea ca prop pentru personalizare
   return <MainPage region={region} />;
 } 
