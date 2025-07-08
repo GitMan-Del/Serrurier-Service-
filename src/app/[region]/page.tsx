@@ -98,5 +98,5 @@ export default function RegionPage({ params }: { params: { region: string } }) {
   if (!regionValid) {
     return <MainPage />;
   }
-  return <MainPage region={region} />;
+  return <MainPage region={region} />; 
 } 

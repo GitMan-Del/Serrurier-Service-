@@ -56,17 +56,16 @@ export const metadata: Metadata = {
     canonical: baseUrl + "/",
   },
   openGraph: {
-    title: "Serrurier Services – Dépannage Rapide 24h/24",
+    title: "Serrurier Services Dépannage Rapide 24h/24",
     description:
       "Serrurier professionnel pour ouvertures de porte, remplacement de serrures et interventions d'urgence. Disponible en Île-de-France 24/7.",
-    url: baseUrl + "/",
     siteName: "Serrurier Services",
     images: [
       {
         url: baseUrl + "/opengraf-image.png",
         width: 1200,
         height: 630,
-        alt: "Serrurier Express – Dépannage 24h/24",
+        alt: "Serrurier Express Dépannage 24h/24",
       },
     ],
     locale: "fr_FR",
@@ -86,9 +85,6 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
     },
-  },
-  icons: {
-    icon: [ baseUrl + "/logo-serrurier-services-ile-de-france.ico"],
   },
 };
 
