@@ -45,7 +45,25 @@ export const metadata = {
 
 
 
-export default function Home() {
+export default function MainPage({ region }: { region?: string } = {}) {
+  // Mapare pentru nume regiuni frumoase
+  const regionNames: Record<string, string> = {
+    "auvergne-rhone-alpes": "Auvergne-Rhône-Alpes",
+    "bourgogne-franche-comte": "Bourgogne-Franche-Comté",
+    "bretagne": "Bretagne",
+    "centre-val-de-loire": "Centre-Val de Loire",
+    "corse": "Corse",
+    "grand-est": "Grand Est",
+    "hauts-de-france": "Hauts-de-France",
+    "ile-de-france": "Île-de-France",
+    "normandie": "Normandie",
+    "nouvelle-aquitaine": "Nouvelle-Aquitaine",
+    "occitanie": "Occitanie",
+    "pays-de-la-loire": "Pays de la Loire",
+    "provence-alpes-cote-d-azur": "Provence-Alpes-Côte d'Azur"
+  };
+  const regionLabel = region ? regionNames[region] : undefined;
+
   return (
     <main className="w-full min-h-screen text-[var(--color-primary)] mx-auto">
       {/* Hero */}
@@ -53,8 +71,13 @@ export default function Home() {
       <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={1006.28} height={1000} className="absolute h-full md:w-[60%] w-full p-0 top-0 left-0 "/>
         {/* Text Part */}
         <div className="md:w-1/2 w-full md:items-start md:text-start text-center items-center justify-center flex flex-col z-10 gap-5">
-        <h1 className="font-playfair font-bold md:text-6xl text-4xl md:max-w-2xl">Serrurier Service Express – Urgence 24h/24</h1>
-        <p className="max-w-2xl md:text-lg text-sm   font-worksans">Ouverture de porte rapide, dépannage de serrure et remplacement de cylindre en urgence — interventions express 24h/24 et 7j/7 dans toute l&apos;Île-de-France. Nos serruriers qualifiés interviennent sans dégât, de jour comme de nuit, pour vous garantir un accès sécurisé à votre domicile ou local professionnel.
+        <h1 className="font-playfair font-bold md:text-6xl text-4xl md:max-w-2xl">
+          {regionLabel ? `Serrurier ${regionLabel} – Urgence 24h/24` : "Serrurier Service Express – Urgence 24h/24"}
+        </h1>
+        <p className="max-w-2xl md:text-lg text-sm   font-worksans">
+          {regionLabel
+            ? `Ouverture de porte rapide, dépannage de serrure et remplacement de cylindre en urgence — interventions express 24h/24 et 7j/7 dans toute la région ${regionLabel}. Nos serruriers qualifiés interviennent sans dégât, de jour comme de nuit, pour vous garantir un accès sécurisé à votre domicile ou local professionnel.`
+            : "Ouverture de porte rapide, dépannage de serrure et remplacement de cylindre en urgence — interventions express 24h/24 et 7j/7 dans toute l'Île-de-France. Nos serruriers qualifiés interviennent sans dégât, de jour comme de nuit, pentru vous garantir un accès sécurisé à votre domicile ou local professionnel."}
         </p>
         <div className="flex flex-row gap-5">
         <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer">📬 Contactez-nous</button>

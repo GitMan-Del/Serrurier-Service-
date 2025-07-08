@@ -99,6 +99,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo-serrurier-services-ile-de-france.ico" sizes="any" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Serrurier Services Île-de-France",
+          "image": "https://serrurierservice.vercel.app/logo-serrurier-services-ile-de-france.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Île-de-France",
+            "addressCountry": "FR"
+          },
+          "telephone": "+33612345678",
+          "url": "https://serrurierservice.vercel.app/",
+          "priceRange": "€€",
+          "openingHours": "Mo-Su 00:00-23:59",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "120"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": "Karim B.",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+              "reviewBody": "Service rapide, clair et efficace. Technicien courtois, travail propre. Un vrai soulagement!"
+            },
+            {
+              "@type": "Review",
+              "author": "Julie R.",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+              "reviewBody": "Serrurier très professionnel, intervention sans dégâts, tarif transparent. Je recommande!"
+            }
+          ]
+        }` }} />
+      </head>
       <body className="antialiased">
         <Navbar />
         {children}
