@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: { params: { region: string } 
   };
 }
 
+// Funcția paginii trebuie să fie SINC, nu async!
 export default function RegionPage({ params }: { params: { region: string } }) {
   const region = REGIONS.find(r => r.slug === params.region);
   if (!region) return <div>Région non trouvée.</div>;
