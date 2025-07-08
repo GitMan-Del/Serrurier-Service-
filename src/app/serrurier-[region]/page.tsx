@@ -20,7 +20,7 @@ export async function generateStaticParams() {
   return REGIONS.map(region => ({ region: region.slug }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: { params: { region: string } }) {
   const region = REGIONS.find(r => r.slug === params.region);
   if (!region) return { title: "Serrurier Service Express" };
   return {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function RegionPage({ params }) {
+export default function RegionPage({ params }: { params: { region: string } }) {
   const region = REGIONS.find(r => r.slug === params.region);
   if (!region) return <div>Région non trouvée.</div>;
   return <RegionMainPage regionName={region.name} />;
