@@ -32,6 +32,8 @@ const regionNames: Record<string, string> = {
   "provence-alpes-cote-d-azur": "Provence-Alpes-Côte d'Azur"
 };
 
+const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
+
 export async function generateMetadata({ params }: { params: { region: string } }) {
   const region = params.region;
   const regionLabel = regionNames[region];
@@ -60,11 +62,11 @@ export async function generateMetadata({ params }: { params: { region: string } 
     openGraph: {
       title: `Serrurier ${regionLabel} – Dépannage Rapide 24h/24`,
       description: `Serrurier professionnel pour ouvertures de porte, remplacement de serrures et interventions d'urgence en ${regionLabel}. Disponible 24/7.`,
-      url: `https://serrurierservice.vercel.app/${region}`,
+      url: `${baseUrl}/${region}`,
       siteName: "Serrurier Services",
       images: [
         {
-          url: "/opengraf-image.png",
+          url: `${baseUrl}/opengraf-image.png`,
           width: 1200,
           height: 630,
           alt: `Serrurier ${regionLabel} – Dépannage 24h/24`,
@@ -72,6 +74,12 @@ export async function generateMetadata({ params }: { params: { region: string } 
       ],
       locale: "fr_FR",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Serrurier ${regionLabel}`,
+      description: `Ouverture de porte et dépannage serrurerie rapide 24/7. Intervention express partout en ${regionLabel}.`,
+      images: [`${baseUrl}/opengraf-image.png`],
     },
     robots: {
       index: true,

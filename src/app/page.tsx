@@ -3,6 +3,7 @@ import { Sun , Star , EyeIcon } from "lucide-react";
 import TestimonialCarousel from "./TestimonialCarousel";
 import Footer from "./Footer";
 
+const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
 
 export const metadata = {
   title: "Serrurier Services - Urgences 24h/24",
@@ -23,12 +24,12 @@ export const metadata = {
   openGraph: {
     title: "Serrurier Services - Urgences 24h/24",
     description: "Serrurier professionnel disponible immédiatement pour ouvertures de porte et urgences en Île-de-France. Interventions sans dégât, 24/7.",
-    url: "https://serrurier-express.fr",
+    url: baseUrl + "/",
     type: "website",
     locale: "fr_FR",
     images: [
       {
-        url: "https://serrurier-express.fr/og-image.jpg",
+        url: baseUrl + "/opengraf-image.png",
         width: 1200,
         height: 630,
         alt: "Serrurier Services",
@@ -40,6 +41,7 @@ export const metadata = {
     title: "Serrurier Services",
     description: "Interventions rapides pour dépannage serrurerie 24h/24 en Île-de-France. Contactez-nous !",
     site: "@serrurierfrance",
+    images: [baseUrl + "/opengraf-image.png"],
   },
 };
 

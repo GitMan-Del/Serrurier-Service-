@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./Navbar";
 
-
+const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
 
 export const metadata: Metadata = {
   title: "Serrurier Services – Dépannage 24h/24 & 7j/7",
@@ -51,19 +51,19 @@ export const metadata: Metadata = {
     "pose serrure multipoint",
     "conseils sécurité domicile",
   ],
-  metadataBase: new URL("https://serrurierservice.vercel.app/"),
+  metadataBase: new URL(baseUrl),
   alternates: {
-    canonical: "https://serrurierservice.vercel.app/",
+    canonical: baseUrl + "/",
   },
   openGraph: {
     title: "Serrurier Services – Dépannage Rapide 24h/24",
     description:
       "Serrurier professionnel pour ouvertures de porte, remplacement de serrures et interventions d'urgence. Disponible en Île-de-France 24/7.",
-    url: "https://serrurierservice.vercel.app/",
+    url: baseUrl + "/",
     siteName: "Serrurier Services",
     images: [
       {
-        url: "/opengraf-image.png",
+        url: baseUrl + "/opengraf-image.png",
         width: 1200,
         height: 630,
         alt: "Serrurier Express – Dépannage 24h/24",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "Serrurier Services",
     description:
       "Ouverture de porte et dépannage serrurerie rapide 24/7. Intervention express partout en Île-de-France.",
-    images: ["/opengraf-image.png"],
+    images: [baseUrl + "/opengraf-image.png"],
   },
   robots: {
     index: true,
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo-serrurier-services-ile-de-france.ico",
+    icon: [ baseUrl + "/logo-serrurier-services-ile-de-france.ico"],
   },
 };
 
@@ -108,10 +108,12 @@ export default function RootLayout({
           "image": "https://serrurierservice.vercel.app/logo-serrurier-services-ile-de-france.png",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Île-de-France",
+            "streetAddress": "54-45 Avenue Hoche",
+            "addressLocality": "Paris",
+            "postalCode": "75008",
             "addressCountry": "FR"
           },
-          "telephone": "+33612345678",
+          "telephone": "+33659514692",
           "url": "https://serrurierservice.vercel.app/",
           "priceRange": "€€",
           "openingHours": "Mo-Su 00:00-23:59",
