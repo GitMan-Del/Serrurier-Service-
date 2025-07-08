@@ -92,13 +92,7 @@ export async function generateMetadata({ params }: { params: { region: string } 
   };
 }
 
-interface RegionPageProps {
-  params: {
-    region: string;
-  };
-}
-
-export default function RegionPage({ params }: RegionPageProps) {
+export default function RegionPage({ params }: { params: { region: string } }) {
   const { region } = params;
   // Verific dacă regiunea este una validă
   const regionValid = REGIONS.includes(region as (typeof REGIONS)[number]);
