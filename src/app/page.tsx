@@ -62,14 +62,37 @@ export default function MainPage() {
   return (
     <main className="w-full min-h-screen text-[var(--color-primary)] mx-auto">
       {/* Hero */}
-      <div id="top" className="w-full mx-auto min-h-screen flex flex-col md:flex-row items-center justify-center md:px-40 px-1 relative pt-20 md:pt-0">
-        <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={2048} height={1742} className="absolute md:w-[60%] w-full p-0 top-0 left-0 hidden md:block" priority quality={80}  layout="responsive" />
-        <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={2048} height={1742} className="w-full h-full p-0 top-0 left-0 block md:hidden absolute" priority quality={80}/>
-        {/* Text Part */}
+      <div id="top" className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center md:px-40 px-1 pt-20 md:pt-0 overflow-hidden">
+        {/* SVG background - sub tot conținutul */}
+        <svg
+          viewBox="0 0 940 768"
+          className="absolute left-0 top-0 h-full w-full md:w-[60%] z-0"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="hero background serrurier services"
+        >
+          <path
+            d="
+              M900 0
+              C773 8 503 24 468 156
+              c-35 132 162 259 280 323
+              118 64 152 65 172 139
+              19 74-12 126-56 150
+              C890 760 880 768 860 768
+              H0
+              V0
+              h900
+              Z
+            "
+            fill="#AEDFF7"
+          />
+        </svg>
+
+
         <div className="md:w-1/2 w-full md:items-start md:text-start text-center items-center justify-center flex flex-col z-10 gap-5">
           <h1
             ref={el => { headingRefs.current[0] = el; }}
-            className="font-playfair font-bold md:text-6xl text-4xl md:max-w-2xl opacity-0"
+            className="font-playfair font-normal md:text-6xl text-4xl md:max-w-2xl opacity-0"
           >Serrurier Service Express Urgence 24h/24</h1>
           <p
             ref={el => { descRefs.current[0] = el; }}
@@ -88,7 +111,7 @@ export default function MainPage() {
           </a>
           <a
             href="tel:+33659514692"
-            className="btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer font-medium btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center"
+            className="btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer   btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center"
           >
             📞+33659514692
           </a>
@@ -118,7 +141,7 @@ export default function MainPage() {
           </div>
         </div>
 
-        <div className="md:w-1/2 w-full h-full items-center justify-center relative md:flex hidden">
+        <div className="md:w-1/2 w-full h-full items-center justify-center relative md:flex hidden z-10">
           <Image
             ref={el => { animatedImgRefs.current[0] = el; }}
             src="/serrurier-professionnel-intervention-rapide.png"
@@ -131,7 +154,16 @@ export default function MainPage() {
         </div>
       </div>
       <div className="w-full h-fit">
-        <Image src="/separator-design-serrurier-services.png" alt="separator design serrurier services" width={1437} height={110} className="w-full" quality={80} layout="responsive"/>
+        <svg
+          viewBox="0 0 1440 150"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          style={{ display: "block", width: "100%", height: "auto" }}
+          className="w-full"
+          aria-label="separator design serrurier services"
+        >
+          <path d="M0,32 C240,96 480,0 720,64 C960,128 1200,32 1440,64 L1440,0 L0,0 Z" fill="#AEDFF7" />
+        </svg>
       </div>
 
       {/* Cards Section (galerie) */}
@@ -152,7 +184,7 @@ export default function MainPage() {
         />
         <h2
           ref={el => { headingRefs.current[1] = el; }}
-          className="font-playfair font-bold md:text-4xl text-4xl tracking-wider text-center md:mt-30 z-10 md:max-w-2xl mt-10 opacity-0"
+          className="font-playfair font-normal md:text-4xl text-4xl tracking-wider text-center md:mt-30 z-10 md:max-w-2xl mt-10 opacity-0"
         >Conseils pratiques & actualités serrurerie</h2>
         <p
           ref={el => { descRefs.current[1] = el; }}
@@ -178,7 +210,7 @@ export default function MainPage() {
         />
         <h2
           ref={el => { headingRefs.current[2] = el; }}
-          className="font-playfair font-bold md:text-4xl text-4xl tracking-wider text-center md:mt-100 mt-10 z-10 md:max-w-2xl opacity-0"
+          className="font-playfair font-normal md:text-4xl text-4xl tracking-wider text-center md:mt-100 mt-10 z-10 md:max-w-2xl opacity-0"
         >Avis clients serrurier Île-de-France</h2>
         <p
           ref={el => { descRefs.current[2] = el; }}
@@ -189,7 +221,6 @@ export default function MainPage() {
         </div>
       </section>
 
-      {/* Sectiune servicii SEO-friendly */}
       <section
         id="services"
         className="w-full py-20 bg-white"
@@ -197,7 +228,7 @@ export default function MainPage() {
         itemType="https://schema.org/Service"
       >
         <div className="max-w-[80%] mx-auto px-4">
-          <h2 className="font-playfair text-4xl font-bold text-center mb-10">
+          <h2 className="font-playfair text-4xl font-normal text-center mb-10">
             Services de serrurerie en Île-de-France
           </h2>
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
@@ -208,7 +239,7 @@ export default function MainPage() {
               itemProp="hasOfferCatalog" itemScope itemType="https://schema.org/OfferCatalog"
             >
               <DoorOpen size={30} strokeWidth={2} className="text-slate-800 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Ouverture de porte</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Ouverture de porte</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Ouverture de porte rapide et sans dégât, 24h/24 et 7j/7, partout en Île-de-France.
               </p>
@@ -220,7 +251,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <AlarmClock size={30} strokeWidth={2} className="text-yellow-500 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Dépannage d&apos;urgence 24h/24 et 7j/7</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Dépannage d&apos;urgence 24h/24 et 7j/7</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Intervention express pour tout problème de serrurerie, à toute heure, même les week-ends et jours fériés.
               </p>
@@ -232,7 +263,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <KeyRound size={30} strokeWidth={2} className="text-sky-500 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Changement de serrure / cylindre</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Changement de serrure / cylindre</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Remplacement de serrure ou cylindre sécurisé, adapté à tous types de portes.
               </p>
@@ -244,7 +275,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <ShieldOff size={30} strokeWidth={2} className="text-red-500 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Réparation après effraction</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Réparation après effraction</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Réparation rapide et sécurisée de portes et serrures après tentative d&apos;effraction.
               </p>
@@ -256,7 +287,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <ShieldCheck size={30} strokeWidth={2} className="text-indigo-500 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Blindage de porte / pose de porte blindée</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Blindage de porte / pose de porte blindée</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Installation de portes blindées et blindage pour une sécurité maximale.
               </p>
@@ -268,7 +299,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <Settings size={30} strokeWidth={2} className="text-emerald-500 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Installation et entretien de serrures multipoints</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Installation et entretien de serrures multipoints</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Pose et maintenance de serrures multipoints certifiées pour une protection optimale.
               </p>
@@ -280,7 +311,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <Users size={30} strokeWidth={2} className="text-orange-400 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Maintenance serrurerie pour professionnels</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Maintenance serrurerie pour professionnels</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Contrats de maintenance et interventions dédiées aux entreprises, commerces et syndics.
               </p>
@@ -292,7 +323,7 @@ export default function MainPage() {
               itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
             >
               <Lightbulb size={30} strokeWidth={2} className="text-sky-500 mb-2" />
-              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Conseils en sécurité</h3>
+              <h3 className="font-playfair text-xl mt-4 mb-2" itemProp="name">Conseils en sécurité</h3>
               <p className="text-base text-gray-600" itemProp="description">
                 Audit et recommandations personnalisées pour renforcer la sécurité de votre habitat ou local professionnel.
               </p>
@@ -304,7 +335,7 @@ export default function MainPage() {
       <section className="w-full min-h-[700px] md:h-screen p-10 relative flex flex-col items-center justify-center md:px-40">
         <h2
           ref={el => { headingRefs.current[3] = el; }}
-          className="font-playfair font-bold md:text-4xl text-4xl tracking-wider text-center md:mt-30 md:max-w-2xl z-20 mt-10 opacity-0"
+          className="font-playfair font-normal md:text-4xl text-4xl tracking-wider text-center md:mt-30 md:max-w-2xl z-20 mt-10 opacity-0"
         >Besoin d&apos;un serrurier en urgence en Île-de-France ?</h2>
         <p
           ref={el => { descRefs.current[3] = el; }}

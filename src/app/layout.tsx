@@ -4,9 +4,9 @@ import Navbar from "./components/Navbar";
 import { Playfair_Display, Work_Sans } from 'next/font/google';
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
-const worksans = Work_Sans({ subsets: ['latin'], weight: ['400', '500'] });
+const worksans = Work_Sans({ subsets: ['latin'], weight: ['300'] });
 
-const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservices.fr";
+const baseUrl = process.env.NEXT_PUBLIC_URL || "https://www.serrurierservices.fr";
 
 export const metadata: Metadata = {
   title: "Serrurier Services – Dépannage 24h/24 & 7j/7",

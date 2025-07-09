@@ -40,7 +40,7 @@ export default function Navbar() {
         >
           &times;
         </button>
-        <nav className="flex flex-col gap-6 text-lg font-medium">
+        <nav className="flex flex-col gap-6 text-lg  ">
           <a href="#top" className="hover:underline" onClick={() => setOpen(false)}>Accueil</a>
           <a href="#gallery" className="hover:underline" onClick={() => setOpen(false)}>Galerie photos</a>
           <a href="#avis" className="hover:underline" onClick={() => setOpen(false)}>Avis clients</a>
