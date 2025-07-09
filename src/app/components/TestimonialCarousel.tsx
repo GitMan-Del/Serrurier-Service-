@@ -79,7 +79,7 @@ export default function TestimonialCarousel() {
             </div>
             <p className="text-gray-800 text-base mb-6">“{t.text}”</p>
             <div className="flex flex-row items-center gap-3 mt-auto">
-              <Image src={t.avatar} alt={t.name} width={48} height={48} className="rounded-full object-cover border border-gray-200" />
+              <Image src={t.avatar} alt={t.name} width={48} height={48} className="rounded-full object-cover border border-gray-200" quality={80} />
               <div>
                 <div className="font-bold text-lg">{t.name}</div>
                 <div className="text-gray-400 text-sm">{t.role}</div>

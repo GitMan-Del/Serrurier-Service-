@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Sun , Star , EyeIcon } from "lucide-react";
-import TestimonialCarousel from "./components/TestimonialCarousel";
+import { Sun , Star , EyeIcon, DoorOpen, AlarmClock, KeyRound, ShieldOff, ShieldCheck, Settings, Users, Lightbulb } from "lucide-react";
+import dynamic from "next/dynamic";
+const TestimonialCarousel = dynamic(() => import("./components/TestimonialCarousel"), { ssr: false });
 import Footer from "./components/Footer";
 import { useEffect, useRef } from "react";
 
@@ -15,6 +16,10 @@ export default function MainPage() {
   const footerRef = useRef<HTMLElement | null>(null);
   // Ref pentru imagini animate
   const animatedImgRefs = useRef<(HTMLImageElement | null)[]>([]);
+  // Ref pentru cardurile de servicii
+  const servicesCardRefs = useRef<(HTMLElement | null)[]>([]);
+  // Ref pentru butonul din sectiunea servicii
+  const servicesBtnRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
@@ -47,6 +52,10 @@ export default function MainPage() {
     animatedImgRefs.current.forEach((el) => {
       if (el) observer.observe(el);
     });
+    servicesCardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+    if (servicesBtnRef.current) observer.observe(servicesBtnRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -54,8 +63,8 @@ export default function MainPage() {
     <main className="w-full min-h-screen text-[var(--color-primary)] mx-auto">
       {/* Hero */}
       <div id="top" className="w-full mx-auto min-h-screen flex flex-col md:flex-row items-center justify-center md:px-40 px-1 relative pt-20 md:pt-0">
-        <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={1006.28} height={1000} className="absolute h-full md:w-[60%] w-full p-0 top-0 left-0 hidden md:block"/>
-        <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={1006.28} height={1000} className="w-full h-full p-0 top-0 left-0 block md:hidden absolute"/>
+        <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={2048} height={1742} className="absolute md:w-[60%] w-full p-0 top-0 left-0 hidden md:block" priority quality={80}  layout="responsive" />
+        <Image src="/serrurier-urgence-ile-de-france-background.png" alt="serrurier urgence Île-de-France, service express 24/7" width={2048} height={1742} className="w-full h-full p-0 top-0 left-0 block md:hidden absolute" priority quality={80}/>
         {/* Text Part */}
         <div className="md:w-1/2 w-full md:items-start md:text-start text-center items-center justify-center flex flex-col z-10 gap-5">
           <h1
@@ -70,19 +79,19 @@ export default function MainPage() {
           </p>
           <div className="flex flex-row gap-5">
           <a
-          href="https://wa.me/33659514692"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-            <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer btn-fade-in">
-              📬 Contactez-nous
-              </button>
-        </a>
-            <a href="tel:+33659514692" className="btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer font-medium btn-fade-in">
-              <button type="button" className="w-full h-full flex items-center justify-center bg-transparent border-none p-0 m-0 hover:cursor-pointer">
-                📞+33659514692
-              </button>
-            </a>
+            href="https://wa.me/33659514692"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center"
+          >
+            📬 Contactez-nous
+          </a>
+          <a
+            href="tel:+33659514692"
+            className="btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer font-medium btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center"
+          >
+            📞+33659514692
+          </a>
           </div>
 
           <div className="w-full btn-fade-in">
@@ -122,7 +131,7 @@ export default function MainPage() {
         </div>
       </div>
       <div className="w-full h-fit">
-        <Image src="/separator-design-serrurier-services.png" alt="separator design serrurier services" width={1440} height={110} className="w-full h-28" />
+        <Image src="/separator-design-serrurier-services.png" alt="separator design serrurier services" width={1437} height={110} className="w-full" quality={80} layout="responsive"/>
       </div>
 
       {/* Cards Section (galerie) */}
@@ -177,6 +186,118 @@ export default function MainPage() {
         >Découvrez les avis authentiques de nos clients satisfaits à Paris et dans toute l’Île-de-France. Réactivité, professionnalisme et interventions sans dommage nos serruriers sont vivement recommandés pour leur efficacité et leur sérieux.</p>
         <div className="w-full flex justify-center z-10 mt-4">
           <TestimonialCarousel />
+        </div>
+      </section>
+
+      {/* Sectiune servicii SEO-friendly */}
+      <section
+        id="services"
+        className="w-full py-20 bg-white"
+        itemScope
+        itemType="https://schema.org/Service"
+      >
+        <div className="max-w-[80%] mx-auto px-4">
+          <h2 className="font-playfair text-4xl font-bold text-center mb-10">
+            Services de serrurerie en Île-de-France
+          </h2>
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+            {/* Ouverture de porte */}
+            <article
+              ref={el => { servicesCardRefs.current[0] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0"
+              itemProp="hasOfferCatalog" itemScope itemType="https://schema.org/OfferCatalog"
+            >
+              <DoorOpen size={30} strokeWidth={2} className="text-slate-800 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Ouverture de porte</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Ouverture de porte rapide et sans dégât, 24h/24 et 7j/7, partout en Île-de-France.
+              </p>
+            </article>
+            {/* Dépannage d'urgence */}
+            <article
+              ref={el => { servicesCardRefs.current[1] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0 reveal-delay"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <AlarmClock size={30} strokeWidth={2} className="text-yellow-500 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Dépannage d&apos;urgence 24h/24 et 7j/7</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Intervention express pour tout problème de serrurerie, à toute heure, même les week-ends et jours fériés.
+              </p>
+            </article>
+            {/* Changement de serrure */}
+            <article
+              ref={el => { servicesCardRefs.current[2] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <KeyRound size={30} strokeWidth={2} className="text-sky-500 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Changement de serrure / cylindre</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Remplacement de serrure ou cylindre sécurisé, adapté à tous types de portes.
+              </p>
+            </article>
+            {/* Réparation après effraction */}
+            <article
+              ref={el => { servicesCardRefs.current[3] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0 reveal-delay"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <ShieldOff size={30} strokeWidth={2} className="text-red-500 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Réparation après effraction</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Réparation rapide et sécurisée de portes et serrures après tentative d&apos;effraction.
+              </p>
+            </article>
+            {/* Blindage de porte */}
+            <article
+              ref={el => { servicesCardRefs.current[4] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <ShieldCheck size={30} strokeWidth={2} className="text-indigo-500 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Blindage de porte / pose de porte blindée</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Installation de portes blindées et blindage pour une sécurité maximale.
+              </p>
+            </article>
+            {/* Serrures multipoints */}
+            <article
+              ref={el => { servicesCardRefs.current[5] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0 reveal-delay"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <Settings size={30} strokeWidth={2} className="text-emerald-500 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Installation et entretien de serrures multipoints</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Pose et maintenance de serrures multipoints certifiées pour une protection optimale.
+              </p>
+            </article>
+            {/* Maintenance pro */}
+            <article
+              ref={el => { servicesCardRefs.current[6] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <Users size={30} strokeWidth={2} className="text-orange-400 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Maintenance serrurerie pour professionnels</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Contrats de maintenance et interventions dédiées aux entreprises, commerces et syndics.
+              </p>
+            </article>
+            {/* Conseils sécurité */}
+            <article
+              ref={el => { servicesCardRefs.current[7] = el; }}
+              className="bg-white border border-gray-300 rounded-2xl shadow-sm p-8 min-h-[280px] max-w-[540px] mx-auto flex flex-col items-center text-center opacity-0 reveal-delay"
+              itemProp="itemListElement" itemScope itemType="https://schema.org/Service"
+            >
+              <Lightbulb size={30} strokeWidth={2} className="text-sky-500 mb-2" />
+              <h3 className="font-bold text-xl mt-4 mb-2" itemProp="name">Conseils en sécurité</h3>
+              <p className="text-base text-gray-600" itemProp="description">
+                Audit et recommandations personnalisées pour renforcer la sécurité de votre habitat ou local professionnel.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 

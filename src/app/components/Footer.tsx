@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Col 1 */}
         <div className="flex-1 min-w-[220px]">
           <div className="flex flex-col items-start gap-2 mb-2">
-            <Image src="/logo-serrurier-services-ile-de-france.png" alt="logo serrurier services Île-de-France" width={60} height={40} />
+            <Image src="/logo-serrurier-services-ile-de-france.png" alt="logo serrurier services Île-de-France" width={60} height={40} quality={80} />
             <span className="font-bold text-lg">Serrurier Services</span>
           </div>
           <p className="text-sm text-gray-700 mb-4">

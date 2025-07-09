@@ -1,3 +1,9 @@
+# *
 User-agent: *
 Allow: /
-Sitemap: https://serrurierservice.vercel.app/sitemap.xml 
+
+# Host
+Host: https://serrurierservice.vercel.app
+
+# Sitemaps
+Sitemap: https://serrurierservice.vercel.app/sitemap.xml

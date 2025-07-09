@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import { Playfair_Display, Work_Sans } from 'next/font/google';
 
-const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
+const playfair = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
+const worksans = Work_Sans({ subsets: ['latin'], weight: ['400', '500'] });
+
+const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservices.fr";
 
 export const metadata: Metadata = {
   title: "Serrurier Services – Dépannage 24h/24 & 7j/7",
@@ -138,14 +142,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#050505" />
         <link rel="icon" href="/logo-serrurier-services-ile-de-france.ico" sizes="any" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "Serrurier Services Île-de-France",
-          "image": "https://serrurierservice.vercel.app/logo-serrurier-services-ile-de-france.png",
+          "image": "https://serrurierservices.fr/logo-serrurier-services-ile-de-france.png",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "54-45 Avenue Hoche",
@@ -154,7 +160,7 @@ export default function RootLayout({
             "addressCountry": "FR"
           },
           "telephone": "+33659514692",
-          "url": "https://serrurierservice.vercel.app/",
+          "url": "https://serrurierservices.fr/",
           "priceRange": "€€",
           "openingHours": "Mo-Su 00:00-23:59",
           "aggregateRating": {
@@ -178,7 +184,7 @@ export default function RootLayout({
           ]
         }` }} />
       </head>
-      <body className="antialiased">
+      <body className={`antialiased ${playfair.className} ${worksans.className}`}>
         <Navbar />
         {children}
       </body>
