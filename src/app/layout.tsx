@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 
 const baseUrl = process.env.NEXT_PUBLIC_URL || "https://serrurierservice.vercel.app";
 

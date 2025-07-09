@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { Sun , Star , EyeIcon } from "lucide-react";
-import TestimonialCarousel from "./TestimonialCarousel";
-import Footer from "./Footer";
+import TestimonialCarousel from "./components/TestimonialCarousel";
+import Footer from "./components/Footer";
 import { useEffect, useRef } from "react";
 
 export default function MainPage() {
@@ -11,13 +11,23 @@ export default function MainPage() {
   const headingRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   // Ref pentru descrieri
   const descRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  // Ref pentru footer
+  const footerRef = useRef<HTMLElement | null>(null);
+  // Ref pentru imagini animate
+  const animatedImgRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("reveal-from-bottom");
+            // Adaug animatia potrivita in functie de data-anim-type
+            const animType = (entry.target as HTMLElement).dataset.animType;
+            if (animType) {
+              entry.target.classList.add(animType);
+            } else {
+              entry.target.classList.add("reveal-from-bottom");
+            }
             if (entry.target.classList.contains("reveal-delay")) {
               // delay e deja in clasa
             }
@@ -31,6 +41,10 @@ export default function MainPage() {
       if (el) observer.observe(el);
     });
     descRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+    if (footerRef.current) observer.observe(footerRef.current);
+    animatedImgRefs.current.forEach((el) => {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
@@ -50,20 +64,28 @@ export default function MainPage() {
           >Serrurier Service Express Urgence 24h/24</h1>
           <p
             ref={el => { descRefs.current[0] = el; }}
-            className="max-w-2xl md:text-lg text-sm  font-worksans opacity-0 reveal-delay"
+            className="max-w-2xl md:text-lg text-sm font-worksans opacity-0 reveal-delay"
           >
             Ouverture de porte rapide, dépannage de serrure et remplacement de cylindre en urgence, interventions express 24h/24 et 7j/7 dans toute l’Île-de-France. Nos serruriers qualifiés interviennent sans aucun dégât, de jour comme de nuit, pour vous garantir un accès sécurisé à votre domicile ou à vos locaux professionnels.
           </p>
           <div className="flex flex-row gap-5">
-            <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer btn-fade-in">📬 Contactez-nous</button>
+          <a
+          href="https://wa.me/33659514692"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+            <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer btn-fade-in">
+              📬 Contactez-nous
+              </button>
+        </a>
             <a href="tel:+33659514692" className="btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer font-medium btn-fade-in">
-              <button type="button" className="w-full h-full flex items-center justify-center bg-transparent border-none p-0 m-0">
+              <button type="button" className="w-full h-full flex items-center justify-center bg-transparent border-none p-0 m-0 hover:cursor-pointer">
                 📞+33659514692
               </button>
             </a>
           </div>
 
-          <div className="w-full">
+          <div className="w-full btn-fade-in">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full md:max-w-3xl items-start rounded-2xl md:border md:border-[#333333] p-4 ">
               <div className="flex flex-col items-start gap-2">
                 <Sun fill="black" className="w-5 h-5" />
@@ -88,7 +110,15 @@ export default function MainPage() {
         </div>
 
         <div className="md:w-1/2 w-full h-full items-center justify-center relative md:flex hidden">
-          <Image src="/serrurier-professionnel-intervention-rapide.png" alt="serrurier professionnel intervention rapide Île-de-France" width={635.31} height={778.19} className="float-rotate-fade-right" />
+          <Image
+            ref={el => { animatedImgRefs.current[0] = el; }}
+            src="/serrurier-professionnel-intervention-rapide.png"
+            alt="serrurier professionnel intervention rapide Île-de-France"
+            width={635.31}
+            height={778.19}
+            data-anim-type="float-rotate-fade-right"
+            className=""
+          />
         </div>
       </div>
       <div className="w-full h-fit">
@@ -102,14 +132,14 @@ export default function MainPage() {
           alt="galerie intervenții serrurier Île-de-France, exemple lucrări"
           width={1252}
           height={532.85}
-          className="md:absolute w-full object-contain md:block hidden"
+          className="md:absolute w-full object-contain md:block hidden  btn-fade-in"
         />
         <Image
           src="/galerie-interventii-serrurier-mobile.png"
           alt="galerie intervenții serrurier Île-de-France mobil"
           width={1252}
           height={532.85}
-          className="md:hidden w-full object-cover"
+          className="md:hidden w-full object-cover btn-fade-in"
         />
         <h2
           ref={el => { headingRefs.current[1] = el; }}
@@ -127,7 +157,7 @@ export default function MainPage() {
           alt="testimoniale clienți serrurier Île-de-France, recenzii reale"
           width={1375}
           height={502}
-          className="md:absolute w-[80%]   md:block hidden"
+          className="md:absolute w-[80%] md:block hidden reveal-from-bottom"
         />
 
         <Image
@@ -135,7 +165,7 @@ export default function MainPage() {
           alt="galerie serrurier mobile suport Île-de-France"
           width={1252}
           height={532.85}
-          className="md:hidden w-full object-cover"
+          className="md:hidden w-full object-cover reveal-from-bottom"
         />
         <h2
           ref={el => { headingRefs.current[2] = el; }}
@@ -144,7 +174,7 @@ export default function MainPage() {
         <p
           ref={el => { descRefs.current[2] = el; }}
           className="md:max-w-2xl max-w-full text-lg font-worksans text-center z-10 mt-4 opacity-0 reveal-delay"
-        >Découvrez les avis authentiques de nos clients satisfaits à Paris et dans toute l’Île-de-France. Réactivité, professionnalisme et interventions sans dommage : nos serruriers sont vivement recommandés pour leur efficacité et leur sérieux.</p>
+        >Découvrez les avis authentiques de nos clients satisfaits à Paris et dans toute l’Île-de-France. Réactivité, professionnalisme et interventions sans dommage nos serruriers sont vivement recommandés pour leur efficacité et leur sérieux.</p>
         <div className="w-full flex justify-center z-10 mt-4">
           <TestimonialCarousel />
         </div>
@@ -159,20 +189,49 @@ export default function MainPage() {
           ref={el => { descRefs.current[3] = el; }}
           className="md:max-w-3xl max-w-full text-lg font-worksans text-center z-20 mt-4 opacity-0 reveal-delay"
         >Parcourez notre galerie pour découvrir des articles pratiques et illustrés, rédigés par nos spécialistes. Nos conseils vous aideront à sécuriser votre logement, à choisir la serrure idéale et à adopter les bons réflexes en cas d’urgence. Des ressources simples et efficaces pour votre tranquillité d’esprit au quotidien.</p>
-        <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer mt-5 btn-fade-in">📬 Contactez-nous</button>
-        <Image src="/decor-ellipse-13.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute md:top-10 md:left-70 top-0 left-20 z-10 animate-rotate-bounce-left"/>
-        <Image src="/decor-ellipse-14.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-30 md:left-40 left-0 z-50 animate-rotate-bounce-right"/>
-        <Image src="/decor-ellipse-15.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-60 md:left-50 left-45 z-10 opacity-0 md:opacity-100 animate-rotate-bounce-left"/>
-        <Image src="/decor-ellipse-16.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-90 md:left-90 left-15 z-10 animate-rotate-bounce-right"/>
-        <Image src="/decor-ellipse-17.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="md:absolute top-20 md:left-96 left-5 z-50 hidden md:block animate-rotate-bounce-left"/> 
-        <Image src="/decor-ellipse-18.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-10 md:right-70 right-0 z-10 animate-rotate-bounce-right"/>
-        <Image src="/decor-ellipse-19.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-30 md:right-40 right-15 z-50 animate-rotate-bounce-left"/>
-        <Image src="/decor-ellipse-20.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="md:absolute top-60 md:right-50 right-45 z-10 hidden md:block animate-rotate-bounce-right"/>
-        <Image src="/decor-ellipse-21.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-90 md:right-90 right-10 z-10 animate-rotate-bounce-left"/>
-        <Image src="/decor-ellipse-22.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="md:absolute top-20 md:right-96 right-5 z-50 hidden md:block animate-rotate-bounce-right"/>
+        <a
+          href="https://wa.me/33659514692"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-5 btn-fade-in"
+        >
+          <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer flex items-center justify-center w-full">
+            📬 Contactez-nous
+          </button>
+        </a>
+        <Image
+          ref={el => { animatedImgRefs.current[1] = el; }}
+          src="/decor-ellipse-13.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute md:top-10 md:left-70 top-0 left-20 z-10" data-anim-type="animate-rotate-bounce-left"/>
+        <Image
+          ref={el => { animatedImgRefs.current[2] = el; }}
+          src="/decor-ellipse-14.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-30 md:left-40 left-0 z-50" data-anim-type="animate-rotate-bounce-right"/>
+        <Image
+          ref={el => { animatedImgRefs.current[3] = el; }}
+          src="/decor-ellipse-15.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-60 md:left-50 left-45 z-10 opacity-0 md:opacity-100" data-anim-type="animate-rotate-bounce-left"/>
+        <Image
+          ref={el => { animatedImgRefs.current[4] = el; }}
+          src="/decor-ellipse-16.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-90 md:left-90 left-15 z-10" data-anim-type="animate-rotate-bounce-right"/>
+        <Image
+          ref={el => { animatedImgRefs.current[5] = el; }}
+          src="/decor-ellipse-17.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="md:absolute top-20 md:left-96 left-5 z-50 hidden md:block" data-anim-type="animate-rotate-bounce-left"/> 
+        <Image
+          ref={el => { animatedImgRefs.current[6] = el; }}
+          src="/decor-ellipse-18.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-10 md:right-70 right-0 z-10" data-anim-type="animate-rotate-bounce-right"/>
+        <Image
+          ref={el => { animatedImgRefs.current[7] = el; }}
+          src="/decor-ellipse-19.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-30 md:right-40 right-15 z-50" data-anim-type="animate-rotate-bounce-left"/>
+        <Image
+          ref={el => { animatedImgRefs.current[8] = el; }}
+          src="/decor-ellipse-20.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="md:absolute top-60 md:right-50 right-45 z-10 hidden md:block" data-anim-type="animate-rotate-bounce-right"/>
+        <Image
+          ref={el => { animatedImgRefs.current[9] = el; }}
+          src="/decor-ellipse-21.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="absolute top-90 md:right-90 right-10 z-10" data-anim-type="animate-rotate-bounce-left"/>
+        <Image
+          ref={el => { animatedImgRefs.current[10] = el; }}
+          src="/decor-ellipse-22.png"  alt="élément décoratif galerie serrurier" width={50} height={50} className="md:absolute top-20 md:right-96 right-5 z-50 hidden md:block" data-anim-type="animate-rotate-bounce-right"/>
       </section>
 
-      <section className="w-full h-fit md:p-10">
+      <section ref={footerRef} className="w-full h-fit md:p-10 opacity-0 reveal-delay">
         <Footer />
       </section>
     </main>

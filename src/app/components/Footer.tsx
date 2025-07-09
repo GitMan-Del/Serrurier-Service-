@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -18,11 +18,6 @@ export default function Footer() {
           <p className="text-sm text-gray-700 mb-4">
             Serrurier Services propune des interventions rapides et fiables 24h/24 pour l&apos;ouverture de porte, le changement de serrure et tous dépannages en urgence. Nos techniciens qualifiés interviennent sans dégâts dans toute l&apos;Île-de-France.
           </p>
-          <div className="flex gap-3 mt-2">
-            {[1,2,3,4].map(i => (
-              <span key={i} className="w-6 h-6 rounded-full bg-gray-200 inline-block"></span>
-            ))}
-          </div>
         </div>
         {/* Col 2 */}
         <div className="flex-1 min-w-[180px]">
@@ -57,11 +52,11 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="max-w-6xl mx-auto px-4 mt-8 pt-4 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-2">
         <div>© 2025 Serrurier Service</div>
-        <div className="flex gap-4 flex-wrap justify-center md:justify-between text-center items-center">
+        {/* <div className="flex gap-4 flex-wrap justify-center md:justify-between text-center items-center">
           <Link href="/mentions-legales" className="underline">Mentions légales</Link>
           <Link href="/confidentialite" className="underline">Politique de confidentialité</Link>
           <Link href="/cgu" className="underline">Conditions générales d&apos;utilisation</Link>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
