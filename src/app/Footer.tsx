@@ -43,7 +43,7 @@ export default function Footer() {
             </li>
             <li>
               <span className="inline-block mr-2">📞</span>
-              <a href="tel:0612345678" className="hover:underline">+33659514692 (7j/7 – 24h/24)</a>
+              <a href="tel:+33659514692" className="hover:underline">+33659514692 (7j/7 – 24h/24)</a>
             </li>
             <li>
               <span className="inline-block mr-2">📍</span>

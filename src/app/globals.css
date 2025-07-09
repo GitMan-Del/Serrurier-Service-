@@ -40,3 +40,107 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Animatie: Rotatie lina spre stanga + float sus-jos */
+@keyframes float-rotate-left {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(-16px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+/* Animatie: Rotatie lina spre dreapta + float sus-jos */
+@keyframes float-rotate-right {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(8deg) translateY(-16px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+/* Clase utilitare pentru animatii */
+.animate-rotate-bounce-left {
+  animation: float-rotate-left 4.5s ease-in-out infinite;
+}
+.animate-rotate-bounce-right {
+  animation: float-rotate-right 7.5s ease-in-out infinite;
+}
+
+/* Animatie: Textul apare de jos in sus, ca si cum ar veni de dupa o linie */
+@keyframes reveal-from-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(60%);
+    clip-path: inset(100% 0 0 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4%);
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.reveal-from-bottom {
+  opacity: 0;
+  transform: translateY(60%);
+  clip-path: inset(100% 0 0 0);
+  animation: reveal-from-bottom 0.9s cubic-bezier(0.77,0,0.175,1) forwards;
+}
+
+.reveal-delay {
+  animation-delay: 0.25s;
+}
+
+@keyframes float-rotate-fade-right {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) translateY(40px);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(8deg) translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+.float-rotate-fade-right {
+  opacity: 0;
+  animation: float-rotate-fade-right 1.2s cubic-bezier(0.77,0,0.175,1) forwards, float-rotate-right 4.5s 1.2s ease-in-out infinite;
+}
+
+@keyframes btn-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.04) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.btn-fade-in {
+  opacity: 0;
+  animation: btn-fade-in 0.8s cubic-bezier(0.77,0,0.175,1) 0.5s forwards;
+}

@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar fixed top */}
-      <nav className="fixed w-fit md:left-40 bg-transparent top-10 left-0 z-100 flex items-center justify-between px-6 py-3">
+      <nav className="fixed w-fit md:left-40 bg-transparent top-10 left-0 z-50 flex items-center justify-between px-6 py-3">
         <button
           className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-special)] shadow-lg hover:scale-105 transition-all group hover:cursor-pointer"
           aria-label="Ouvrir le menu"
@@ -29,7 +29,7 @@ export default function Navbar() {
       />
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-72 max-w-[90vw] bg-white shadow-2xl z-50 flex flex-col pt-8 px-6 transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed z-100 top-0 left-0 h-full w-72 max-w-[90vw] bg-white shadow-2xl flex flex-col pt-8 px-6 transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"}`}
         role="navigation"
         aria-label="Menu principal"
       >
