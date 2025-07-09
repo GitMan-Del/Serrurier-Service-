@@ -45,11 +45,11 @@ export default function MainPage() {
         {/* Text Part */}
         <div className="md:w-1/2 w-full md:items-start md:text-start text-center items-center justify-center flex flex-col z-10 gap-5">
           <h1
-            ref={el => headingRefs.current[0] = el}
+            ref={el => { headingRefs.current[0] = el; }}
             className="font-playfair font-bold md:text-6xl text-4xl md:max-w-2xl opacity-0"
           >Serrurier Service Express Urgence 24h/24</h1>
           <p
-            ref={el => descRefs.current[0] = el}
+            ref={el => { descRefs.current[0] = el; }}
             className="max-w-2xl md:text-lg text-sm  font-worksans opacity-0 reveal-delay"
           >
             Ouverture de porte rapide, dépannage de serrure et remplacement de cylindre en urgence, interventions express 24h/24 et 7j/7 dans toute l’Île-de-France. Nos serruriers qualifiés interviennent sans aucun dégât, de jour comme de nuit, pour vous garantir un accès sécurisé à votre domicile ou à vos locaux professionnels.
@@ -112,11 +112,11 @@ export default function MainPage() {
           className="md:hidden w-full object-cover"
         />
         <h2
-          ref={el => headingRefs.current[1] = el}
+          ref={el => { headingRefs.current[1] = el; }}
           className="font-playfair font-bold md:text-4xl text-4xl tracking-wider text-center md:mt-30 z-10 md:max-w-2xl mt-10 opacity-0"
         >Conseils pratiques & actualités serrurerie</h2>
         <p
-          ref={el => descRefs.current[1] = el}
+          ref={el => { descRefs.current[1] = el; }}
           className="md:max-w-3xl max-w-full text-lg   font-worksans text-center z-10 mt-4 opacity-0 reveal-delay"
         >Découvrez dans notre galerie une sélection d’articles pratiques et illustrés, rédigés par nos serruriers experts. Profitez de nos conseils pour renforcer la sécurité de votre habitation, choisir la serrure la plus adaptée à vos besoins et réagir efficacement en cas d’urgence. Des contenus clairs et utiles pour vous accompagner au quotidien.</p>
       </section>
@@ -138,11 +138,11 @@ export default function MainPage() {
           className="md:hidden w-full object-cover"
         />
         <h2
-          ref={el => headingRefs.current[2] = el}
+          ref={el => { headingRefs.current[2] = el; }}
           className="font-playfair font-bold md:text-4xl text-4xl tracking-wider text-center md:mt-100 mt-10 z-10 md:max-w-2xl opacity-0"
         >Avis clients serrurier Île-de-France</h2>
         <p
-          ref={el => descRefs.current[2] = el}
+          ref={el => { descRefs.current[2] = el; }}
           className="md:max-w-2xl max-w-full text-lg font-worksans text-center z-10 mt-4 opacity-0 reveal-delay"
         >Découvrez les avis authentiques de nos clients satisfaits à Paris et dans toute l’Île-de-France. Réactivité, professionnalisme et interventions sans dommage : nos serruriers sont vivement recommandés pour leur efficacité et leur sérieux.</p>
         <div className="w-full flex justify-center z-10 mt-4">
@@ -152,11 +152,11 @@ export default function MainPage() {
 
       <section className="w-full min-h-[700px] md:h-screen p-10 relative flex flex-col items-center justify-center md:px-40">
         <h2
-          ref={el => headingRefs.current[3] = el}
+          ref={el => { headingRefs.current[3] = el; }}
           className="font-playfair font-bold md:text-4xl text-4xl tracking-wider text-center md:mt-30 md:max-w-2xl z-20 mt-10 opacity-0"
         >Besoin d&apos;un serrurier en urgence en Île-de-France ?</h2>
         <p
-          ref={el => descRefs.current[3] = el}
+          ref={el => { descRefs.current[3] = el; }}
           className="md:max-w-3xl max-w-full text-lg font-worksans text-center z-20 mt-4 opacity-0 reveal-delay"
         >Parcourez notre galerie pour découvrir des articles pratiques et illustrés, rédigés par nos spécialistes. Nos conseils vous aideront à sécuriser votre logement, à choisir la serrure idéale et à adopter les bons réflexes en cas d’urgence. Des ressources simples et efficaces pour votre tranquillité d’esprit au quotidien.</p>
         <button className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer mt-5 btn-fade-in">📬 Contactez-nous</button>
