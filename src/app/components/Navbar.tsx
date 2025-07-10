@@ -45,6 +45,7 @@ export default function Navbar() {
           <a href="#gallery" className="hover:underline" onClick={() => setOpen(false)}>Galerie photos</a>
           <a href="#avis" className="hover:underline" onClick={() => setOpen(false)}>Avis clients</a>
           <a href="#services" className="hover:underline" onClick={() => setOpen(false)}>Nos services</a>
+          <a href="/zone" className="hover:underline" onClick={() => setOpen(false)}>Zones couvertes</a>
         </nav>
         <div className="mt-auto pt-10 text-xs text-gray-400">© 2025 Serrurier Services</div>
       </aside>
