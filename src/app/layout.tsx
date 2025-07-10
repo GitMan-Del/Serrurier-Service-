@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Playfair_Display, Work_Sans } from 'next/font/google';
@@ -198,6 +199,7 @@ export default function RootLayout({
       </head>
       <body className={`antialiased ${playfair.className} ${worksans.className}`}>
         <Navbar />
+        <Analytics />
         {children}
       </body>
     </html>
