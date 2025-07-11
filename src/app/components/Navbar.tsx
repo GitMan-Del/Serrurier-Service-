@@ -1,9 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Helper pentru generarea href-urilor corecte
+  const getHomeHref = (hash: string) => (pathname === "/" ? hash : "/" + hash);
+
   return (
     <>
       {/* Navbar fixed top */}
@@ -41,10 +47,10 @@ export default function Navbar() {
           &times;
         </button>
         <nav className="flex flex-col gap-6 text-lg  ">
-          <a href="#top" className="hover:underline" onClick={() => setOpen(false)}>Accueil</a>
-          <a href="#gallery" className="hover:underline" onClick={() => setOpen(false)}>Galerie photos</a>
-          <a href="#avis" className="hover:underline" onClick={() => setOpen(false)}>Avis clients</a>
-          <a href="#services" className="hover:underline" onClick={() => setOpen(false)}>Nos services</a>
+          <a href={getHomeHref("#top")} className="hover:underline" onClick={() => setOpen(false)}>Accueil</a>
+          <a href={getHomeHref("#gallery")} className="hover:underline" onClick={() => setOpen(false)}>Galerie photos</a>
+          <a href={getHomeHref("#avis")} className="hover:underline" onClick={() => setOpen(false)}>Avis clients</a>
+          <a href={getHomeHref("#services")} className="hover:underline" onClick={() => setOpen(false)}>Nos services</a>
           <a href="/zone" className="hover:underline" onClick={() => setOpen(false)}>Zones couvertes</a>
         </nav>
         <div className="mt-auto pt-10 text-xs text-gray-400">© 2025 Serrurier Services</div>
