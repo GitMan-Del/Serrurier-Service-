@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Playfair_Display, Work_Sans } from 'next/font/google';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
 const worksans = Work_Sans({ subsets: ['latin'], weight: ['300'] });
@@ -201,6 +202,7 @@ export default function RootLayout({
         <Navbar />
         <Analytics />
         {children}
+        <SpeedInsights/>
       </body>
     </html>
   );
