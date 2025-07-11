@@ -147,16 +147,16 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#050505" />
-        <link rel="icon" href="/logo-serrurier-services-ile-de-france.ico" sizes="any" />
+        <link rel="icon" href="/logo-serrurier-services-ile-de-france.png" sizes="any" />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1003293596"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-90F5F1GQLN"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-1003293596');
+              gtag('config', 'G-90F5F1GQLN');
             `,
           }}
         />
