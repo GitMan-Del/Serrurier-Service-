@@ -1,7 +1,6 @@
 'use client';
 
 import { handlePhoneClickConversion } from '@/utils/gtag';
-import { ReactNode } from 'react';
 
 interface CallBtnProps {
   variant?: 'Call-Btn' | 'Call-Link';
