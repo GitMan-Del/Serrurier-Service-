@@ -1,21 +1,34 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page non trouvée | Serrurier Services Île-de-France",
+  description: "La page que vous recherchez n'existe pas. Retournez à l'accueil pour nos services de serrurerie en Île-de-France.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-center px-4">
-      <h1 className="font-playfair text-6xl font-bold text-[#1e293b] mb-4">404</h1>
-      <h2 className="font-playfair text-2xl font-normal text-[#1e293b] mb-2">Page non trouvée</h2>
-      <p className="font-worksans text-lg text-gray-600 mb-8 max-w-xl">
-        Oups ! La page que vous cherchez n&apos;existe pas ou a été déplacée.<br />
-        Retournez à l&apos;accueil pour continuer votre navigation.
-      </p>
-      <Link href="/">
-        <span className="inline-block bg-[#AEDFF7] text-[#1e293b] font-medium px-6 py-3 rounded-lg shadow hover:bg-[#90cbe6] transition-all duration-200">
+    <main className="min-h-screen flex items-center justify-center px-4">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">404 - Page non trouvée</h1>
+        <p className="text-lg mb-8">
+          La page que vous recherchez n&apos;existe pas ou a été déplacée.
+        </p>
+        <Link
+          href="/"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
           Retour à l&apos;accueil
-        </span>
-      </Link>
-    </div>
+        </Link>
+      </div>
+    </main>
   );
 } 

@@ -3,6 +3,10 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /changement-de-serrure
+Disallow: /installation-et
+Disallow: /*/feed/
+Disallow: /feed/
 
 # Host
 Host: https://serrurierservices.fr
