@@ -1,5 +1,6 @@
 import Image from "next/image";
 // import Link from "next/link";
+import CallBtn from "./CallBtn";
 
 export default function Footer() {
   return (
@@ -37,8 +38,7 @@ export default function Footer() {
               <a href="mailto:contact@serrurier-express.fr" className="hover:underline">adrian@expertsdemaison.fr</a>
             </li>
             <li>
-              <span className="inline-block mr-2">📞</span>
-              <a href="tel:+33659514692" className="hover:underline">+33659514692 (7j/7 – 24h/24)</a>
+              <CallBtn variant="Call-Link" text="+33659514692 (7j/7 , 24h/24)" />
             </li>
             <li>
               <span className="inline-block mr-2">📍</span>

@@ -5,6 +5,7 @@ import { Sun , Star , EyeIcon, DoorOpen, AlarmClock, KeyRound, ShieldOff, Shield
 import dynamic from "next/dynamic";
 const TestimonialCarousel = dynamic(() => import("./components/TestimonialCarousel"), { ssr: false });
 import Footer from "./components/Footer";
+import CallBtn from "./components/CallBtn";
 import { useEffect, useRef } from "react";
 
 export default function MainPage() {
@@ -109,12 +110,7 @@ export default function MainPage() {
           >
             📬 Contactez-nous
           </a>
-          <a
-            href="tel:+33659514692"
-            className="btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer   btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center"
-          >
-            📞+33659514692
-          </a>
+          <CallBtn />
           </div>
 
           <div className="w-full btn-fade-in">
