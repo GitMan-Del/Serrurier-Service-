@@ -1,12 +1,28 @@
 'use client';
 
-import { handlePhoneClickConversion } from '@/app/components/gtag';
-
 interface CallBtnProps {
   variant?: 'Call-Btn' | 'Call-Link';
   text?: string;
   className?: string;
 }
+
+// Funcție robustă pentru tracking conversie și redirect call
+const gtag_report_conversion = (url: string) => {
+  const callback = function () {
+    if (typeof url !== 'undefined') {
+      window.location.href = url;
+    }
+  };
+  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-1003293596/wzxmCL-uoO8aEJyXtN4D',
+      event_callback: callback,
+    });
+  } else {
+    callback();
+  }
+  return false;
+};
 
 const CallBtn = ({
   variant = 'Call-Btn',
@@ -17,7 +33,10 @@ const CallBtn = ({
     return (
       <a
         href="tel:+33659514692"
-        onClick={() => { console.log('CLICK PE CALLBTN!'); handlePhoneClickConversion(); }}
+        onClick={e => {
+          e.preventDefault();
+          gtag_report_conversion('tel:+33659514692');
+        }}
         className={`inline-flex items-center gap-1 text-blue-700 font-medium relative group ${className}`}
         style={{ textDecoration: 'none' }}
       >
@@ -35,7 +54,10 @@ const CallBtn = ({
   return (
     <a
       href="tel:+33659514692"
-      onClick={() => { console.log('CLICK PE CALLBTN!'); handlePhoneClickConversion(); }}
+      onClick={e => {
+        e.preventDefault();
+        gtag_report_conversion('tel:+33659514692');
+      }}
       className={`btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center ${className}`}
     >
       <span className="mr-2" role="img" aria-label="phone">📞</span> {text}

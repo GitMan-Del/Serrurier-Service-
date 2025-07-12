@@ -1,9 +1,12 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
 # Host
-Host: https://www.serrurierservices.fr
+Host: https://serrurierservices.fr
 
 # Sitemaps
-Sitemap: https://www.serrurierservices.fr/sitemap.xml
+Sitemap: https://serrurierservices.fr/sitemap.xml
+Sitemap: https://serrurierservices.fr/sitemap-0.xml
