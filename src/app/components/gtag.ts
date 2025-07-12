@@ -5,12 +5,20 @@ declare global {
   }
   
   export const handlePhoneClickConversion = () => {
+    console.log('handlePhoneClickConversion apelat!');
     if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+      console.log('window.gtag există, trimit conversie:', {
+        send_to: 'AW-1003293596/wzxmCL-uoO8aEJyXtN4D',
+        value: 75.0,
+        currency: 'EUR'
+      });
       window.gtag('event', 'conversion', {
         send_to: 'AW-1003293596/wzxmCL-uoO8aEJyXtN4D',
         value: 75.0,
         currency: 'EUR'
       });
+    } else {
+      console.log('window.gtag NU există!');
     }
   };
   

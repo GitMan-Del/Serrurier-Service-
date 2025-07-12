@@ -1,6 +1,6 @@
 'use client';
 
-import { handlePhoneClickConversion } from '@/utils/gtag';
+import { handlePhoneClickConversion } from '@/app/components/gtag';
 
 interface CallBtnProps {
   variant?: 'Call-Btn' | 'Call-Link';
@@ -17,7 +17,7 @@ const CallBtn = ({
     return (
       <a
         href="tel:+33659514692"
-        onClick={handlePhoneClickConversion}
+        onClick={() => { console.log('CLICK PE CALLBTN!'); handlePhoneClickConversion(); }}
         className={`inline-flex items-center gap-1 text-blue-700 font-medium relative group ${className}`}
         style={{ textDecoration: 'none' }}
       >
@@ -35,7 +35,7 @@ const CallBtn = ({
   return (
     <a
       href="tel:+33659514692"
-      onClick={handlePhoneClickConversion}
+      onClick={() => { console.log('CLICK PE CALLBTN!'); handlePhoneClickConversion(); }}
       className={`btn-sec hover:scale-105 transition-all duration-200 border hover:cursor-pointer btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center ${className}`}
     >
       <span className="mr-2" role="img" aria-label="phone">📞</span> {text}
