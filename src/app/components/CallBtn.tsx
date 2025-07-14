@@ -15,7 +15,7 @@ const gtag_report_conversion = (url: string) => {
   };
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'conversion', {
-      send_to: 'AW-1003293596/wzxmCL-uoO8aEJyXtN4D',
+      send_to: 'AW-1003293596/Dt5-CJ_D0_AaEJyXtN4D',
       event_callback: callback,
     });
   } else {

@@ -157,7 +157,7 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-1003293596');
+              gtag('config', 'AW-1003293596', { send_to: 'AW-1003293596/Dt5-CJ_D0_AaEJyXtN4D' });
             `,
           }}
         />
