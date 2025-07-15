@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Playfair_Display, Work_Sans } from 'next/font/google';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from "next/script";
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
 const worksans = Work_Sans({ subsets: ['latin'], weight: ['300'] });
@@ -150,17 +151,18 @@ export default function RootLayout({
         <meta name="theme-color" content="#050505" />
         <link rel="icon" href="/logo-serrurier-services-ile-de-france.png" sizes="any" />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1003293596"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-1003293596', { send_to: 'AW-1003293596/Dt5-CJ_D0_AaEJyXtN4D' });
-            `,
-          }}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-1003293596"
+          strategy="afterInteractive"
         />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-1003293596', { send_to: 'AW-1003293596/Dt5-CJ_D0_AaEJyXtN4D' });
+          `}
+        </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",

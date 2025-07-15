@@ -60,6 +60,23 @@ export default function MainPage() {
     return () => observer.disconnect();
   }, []);
 
+  // Adaug funcția de tracking pentru WhatsApp
+  const gtag_report_whatsapp = (url: string) => {
+    if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-1003293596/Dt5-CJ_D0_AaEJyXtN4D',
+        event_category: 'whatsapp',
+        event_label: 'Click WhatsApp',
+        event_callback: function() {
+          window.location.href = url;
+        }
+      });
+    } else {
+      window.location.href = url;
+    }
+    return false;
+  };
+
   return (
     <main className="w-full min-h-screen text-[var(--color-primary)] mx-auto">
       {/* Hero */}
@@ -104,6 +121,10 @@ export default function MainPage() {
           <div className="flex flex-row gap-5">
           <a
             href="https://wa.me/33659514692"
+            onClick={e => {
+              e.preventDefault();
+              gtag_report_whatsapp('https://wa.me/33659514692');
+            }}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary hover:scale-105 transition-all duration-200 hover:cursor-pointer btn-fade-in px-6 py-3 text-base md:text-lg rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center"
@@ -339,6 +360,10 @@ export default function MainPage() {
         >Parcourez notre galerie pour découvrir des articles pratiques et illustrés, rédigés par nos spécialistes. Nos conseils vous aideront à sécuriser votre logement, à choisir la serrure idéale et à adopter les bons réflexes en cas d’urgence. Des ressources simples et efficaces pour votre tranquillité d’esprit au quotidien.</p>
         <a
           href="https://wa.me/33659514692"
+          onClick={e => {
+            e.preventDefault();
+            gtag_report_whatsapp('https://wa.me/33659514692');
+          }}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-5 btn-fade-in"
